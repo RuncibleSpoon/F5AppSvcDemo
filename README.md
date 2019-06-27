@@ -5,6 +5,8 @@
 
 This is a beta version of a new cloud-based demo environment that will set up a VPC within AWS (more clouds to follow) contianing an Ubuntu Linux client instance (the Utility Server), an F5 BIG-IP, and Ubuntu Linux server EC2 instance. 
 
+!https://github.com/RuncibleSpoon/F5AppSvcDemo/raw/master/images/lab.png
+
 The deployment is done using [AWS Cloudformation](https://aws.amazon.com/cloudformation/) using the supplied cloudofrmation template. 
 
 The client and server insances run [Docker](https://www.docker.com/) community edition and come laded with some tools and test scenarios to enable you to try out various application serivces like Web Applicaiton firewalls.  
@@ -12,6 +14,8 @@ The client and server insances run [Docker](https://www.docker.com/) community e
 All configuration of the BIG-IP is done via [AS3](http://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/) launched from a simple Python script - no BIG-IP admin experience  required.
 
 This repostitory is cloned onto the client, but AS3 declarations are pulled form the master branch each time the script is run - allowing for rapid update cycles. 
+
+
 
 ## Requirements 
 
@@ -67,25 +71,27 @@ There are two post install steps and some funtionality tests to run post install
 
 First, set an environment variable for the password (this is used in later API calls)
 
-export BIGPASS=<your password>
+`export BIGPASS=<your password>`
 
 Then run
 
-sh ./home/ubuntu/setup.sh
+`sh ./home/ubuntu/setup.sh`
 
 ### EXploring the Lab
 
-####Test Scenarios
+Test Scenarios
+
+
 
 
 
 ## Filing Issues and Getting Help
 If you come across a bug or other issue when using this lab use [GitHub Issues](https://github.com/RuncibleSpoon/F5AppSvcDemo/issues) to submit an issue for our team.  You can also see the current known issues on that page, which are tagged with a purple Known Issue label.  
 
-B
 
 
-## Copyrightf
+
+## Copyright
 
 Copyright 2014-2019 F5 Networks Inc.
 
