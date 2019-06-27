@@ -48,7 +48,14 @@ This lab is designed to be as turnkey as possible, with only a couple of mandato
 
 KeyName: the name of the AWS keypair you need to 
 S3Bucket: The s3 bucket location
-DemoPrivateKey, DemoPublicKey: Dispossable SSH public and pivake eys 
+DemoPrivateKey, DemoPublicKey: Dispossable SSH public and pivake keys
+
+There are also tow others you should set for restricting access
+
+SrcIp:  Source IP address range for SSH
+PubScrIP:  Source IP for App access
+
+These default to open access
 
 ###Steps
 
