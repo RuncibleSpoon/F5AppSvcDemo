@@ -38,8 +38,6 @@ Each sample test will come with instructions and explanations
 
 ### Starting the Lab
 
-
-
 Required Parameters: 
 
 This lab is designed to be as turnkey as possible, with only a couple of mandatory paramters:
@@ -55,22 +53,36 @@ DemoPrivateKey, DemoPublicKey: Dispossable SSH public and pivake eys
 3) Create a disposable ssh key pair and  save the private key sd id_rsa, and the public key as key.pub (this is very bad practice, but just about OK for this demo)
 4) Launch the Lab - tool of your choce - this lab was devloepd using Windows PowerShell for AWS - but you can use the any method you like. An exmaple Script to launch the lab form powershell is supplied.
 5) Get the access details - the parent template outputs the IP addresses for the Utility Server, the BIG-IP and the App server.
-6) Login and explore the test scenarios. 
+6) Login to the util server and complete a couple of post setup tasks 
+7) Explore the lab
+
+### Post  Install tasks (further work required)
 
 
+There are two post install steps and some funtionality tests to run post install.
 
+1) Set the password we will use for authorizarion when using AS3
+2) Run the post install script to a)Provision the correct software and auth on the BIG-IP
+3) Install some additional python modules (this will be moved into the main CFT eventually)
+
+First, set an environment variable for the password (this is used in later API calls)
+
+export BIGPASS=<your password>
+
+Then run
+
+sh ./home/ubuntu/setup.sh
+
+### EXploring the Lab
+
+####Test Scenarios
 
 
 
 ## Filing Issues and Getting Help
-If you come across a bug or other issue when using AS3, use [GitHub Issues](https://github.com/\]issues) to submit an issue for our team.  You can also see the current known issues on that page, which are tagged with a purple Known Issue label.  
+If you come across a bug or other issue when using this lab use [GitHub Issues](https://github.com/RuncibleSpoon/F5AppSvcDemo/issues) to submit an issue for our team.  You can also see the current known issues on that page, which are tagged with a purple Known Issue label.  
 
-Because AS3 is has been created and fully tested by F5 Networks, it is fully supported by F5. This means you can get assistance if necessary from [F5 Technical Support](https://support.f5.com/csp/article/K25327565).  
-
-Be sure to see the [Support page](SUPPORT.md) in this repo for more details and supported versions of AS3.  
-
-**Community Help**  
-We encourage you to use our [Slack channel](https://f5cloudsolutions.herokuapp.com) for discussion and assistance on AS3 templates (click the **f5-appsvcs-extension** channel). There are F5 employees who are members of this community who typically monitor the channel Monday-Friday 9-5 PST and will offer best-effort assistance. This slack channel community support should **not** be considered a substitute for F5 Technical Support. See the [Slack Channel Statement](slack-channel-statement.md) for guidelines on using this channel.
+B
 
 
 ## Copyrightf
