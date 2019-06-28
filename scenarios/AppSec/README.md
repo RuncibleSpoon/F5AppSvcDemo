@@ -16,17 +16,17 @@ Now navigate to the juicshop app
 
 http://<ipaddress of your BIG-IP install>/
 
-![alt text](https://github.com/RuncibleSpoon/F5AppSvcDemo/raw/master/images/juiceshop1.jpg "Juiceshop App" )
+![alt text](https://github.com/RuncibleSpoon/F5AppSvcDemo/raw/master/images/juiceshop1.jpg "Juiceshop App")
 
 We're going to try a simple SQL injection atack on the auth system - this is described by IncognitJoe in an [excellent doument](https://incognitjoe.github.io/hacking-the-juice-shop.html) that can run you through a lot fo the Juiceshop attacks.
 
 Click the logn link and use the email address of "'or 1==1" --  This is classic SQLi stuff
 
-![alt text](https://github.com/RuncibleSpoon/F5AppSvcDemo/raw/master/images/juiceshop2.png  "Juiceshop App" )
+![alt text](https://github.com/RuncibleSpoon/F5AppSvcDemo/raw/master/images/juiceshop2.png  "Juiceshop App")
 
 Suddenly we've unlocked a challaenge and are logged in as admin (user id 1). 
 
-![alt text](https://github.com/RuncibleSpoon/F5AppSvcDemo/raw/master/images/juiceshop3.png  " HackedJuiceshop App" )
+![alt text](https://github.com/RuncibleSpoon/F5AppSvcDemo/raw/master/images/juiceshop3.png  "Hacked Juiceshop App")
 
 Of course we should go and fix the code, but maybe spending 30 seconds to protect the app while we do it makes sense?
 
@@ -35,7 +35,7 @@ Of course we should go and fix the code, but maybe spending 30 seconds to protec
 
 Let's try that again
 
-![alt text](https://github.com/RuncibleSpoon/F5AppSvcDemo/raw/master/images/juiceshop4.png "Juiceshop App" )
+![alt text](https://github.com/RuncibleSpoon/F5AppSvcDemo/raw/master/images/juiceshop4.png "Juiceshop App")
 
 OK, so we also dicsover another hack, where the stystem doesn't handle errors very gracefully, but at least we have shut off this attack. 
 
