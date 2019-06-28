@@ -72,11 +72,11 @@ These default to open access, so tying them down with a network range might be s
 Template outputs 
 
 Output | Description
----------------------
-UtilServerIP| The public IP address of the utility server
-AppServerIP| The public IP address of the application server
-BIGIPIP| The public IP address of the BIG-IP 
-BIGIPUrl | The URL to access the management console of the BIG-IP (use after you set the password in the post install tasks)
+------- | --------------------------------------------------
+UtilServerIP | The public IP address of the utility server
+AppServerIP | The public IP address of the application server
+BIGIPIP | The public IP address of the BIG-IP 
+BIGIPUrl  | The URL to access the management console of the BIG-IP (use after you set the password in the post install tasks)
 
 ### Post  Install tasks (further work required)
 
