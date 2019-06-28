@@ -11,14 +11,14 @@ Parameters:
     Type: AWS::EC2::KeyPair::KeyName
     ConstraintDescription: must be the name of an existing EC2 KeyPair.
   S3Bucket:
-    Description: location of the templates and keys
+    Description: location of the templates and private keys for internal auth
     Type: String
   DemoPrivateKey:
-    Description: The private key to enable auth within this demo
+    Description: The private key to enable auth within this demo DO NOT USE A PRODUCTION KEY
     Type: String
     Default: id_rsa.pem
   DemoPublicKey: 
-    Description: The public key to enable auth within this demo
+    Description: The public key to enable auth within this demo DO NOT USE A PRODUCTION KEY
     Default: key.pub
     Type: String
   AppServerAMI:   
@@ -261,7 +261,7 @@ Resources:
               command: 'sudo docker run -d -p 8080:80 -p 2222:22 -it f5devcentral/f5-super-netops-container:base'    
              # to acccess SSH:  ssh -p 2222 snops@localhost  
             'j_clone_utils ':
-              command: 'git clone https://github.com/RuncibleSpoon/as3 /home/ubuntu/as3'
+              command: 'git clone https://github.com/RuncibleSpoon/F5AppSvcDemo /home/ubuntu/F5AppSvcDemo'
             'k_fix_permissions':
               command: 'chown -R ubuntu:ubuntu ~/ubuntu/as3'   
       
@@ -361,7 +361,12 @@ Resources:
       Tags: 
         - Key: Name
           Value: BIG-IP
-      TemplateURL: https://s3-us-west-1.amazonaws.com/as3bkt/big-ip.yaml
+      
+      TemplateURL: !Join
+                      - ''
+                      - - !Ref S3Bucket
+                        - '/big-ip.yaml'
+    
 
 Outputs:
    UtilServerIP:
