@@ -3,7 +3,7 @@
 
 ## Introduction 
 
-The [OWASP Juicebox App](https://www.owasp.org/index.php/OWASP_Juice_Shop_Project) is a well written, almost-bug free applicaiton that is chck full of vulnerabilites for you to find and expliot.  
+The [OWASP Juicebox App](https://www.owasp.org/index.php/OWASP_Juice_Shop_Project) is a well written, almost-bug free applicaiton that is chock full of vulnerabilites for you to find and expliot.  
 
 For this test scenario you can first confugure the BIG-IP to proxy traffic to the contianer running on port 3000 on the app server, then check out a simple hack, then confugure BIG-IP to protect the application, and run the test agian. 
 
@@ -42,6 +42,7 @@ OK, so we also dicsover another hack, where the stystem doesn't handle errors ve
 Taking a look at the [protect_juiceshop.json](https://github.com/RuncibleSpoon/F5AppSvcDemo/blob/master/declarations/protect_juiceshop.json) declaration, you can see a couple of key differences from the simple [juiceshop.json](https://github.com/RuncibleSpoon/F5AppSvcDemo/blob/master/declarations/juiceshop.json) declaration. 
 
 In particular the relevant lines are 
+
 `"pool": "juice_pool",
                      "policyWAF": {
                         "use": "JuiceShopASM"
@@ -55,6 +56,10 @@ and
                     "url": "https://raw.githubusercontent.com/RuncibleSpoon/F5AppSvcDemo/master/scenarios/AppSec/JuiceShop.xml"
                     "ignoreChanges": true
                 },`
+
+Where we define which Web Applicaiotn Firewall (WAF) policy to use, and later define the [policy location](https://github.com/RuncibleSpoon/F5AppSvcDemo/blob/master/scenarios/AppSec/JuiceShop.xml). The policy is readable, but is checksummed to prevent mailicious interference. 
+
+There are probably other hacks that this policy mitigates, why not try to find a few? 
 
 
 
