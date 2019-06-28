@@ -69,6 +69,15 @@ These default to open access, so tying them down with a network range might be s
 7) Login to the util server and complete a couple of post setup tasks 
 8) Explore the labs
 
+Template outputs 
+
+Output | Description
+---------------------
+UtilServerIP| The public IP address of the utility server
+AppServerIP| The public IP address of the application server
+BIGIPIP| The public IP address of the BIG-IP 
+BIGIPUrl | The URL to access the management console of the BIG-IP (use after you set the password in the post install tasks)
+
 ### Post  Install tasks (further work required)
 
 
