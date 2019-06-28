@@ -39,5 +39,22 @@ Let's try that again
 
 OK, so we also dicsover another hack, where the stystem doesn't handle errors very gracefully, but at least we have shut off this attack. 
 
+Taking a look at the [protect_juiceshop.json](https://github.com/RuncibleSpoon/F5AppSvcDemo/blob/master/declarations/protect_juiceshop.json) declaration, you can see a couple of key differences from the simple [juiceshop.json](https://github.com/RuncibleSpoon/F5AppSvcDemo/blob/master/declarations/juiceshop.json) declaration. 
+
+In particular the relevant lines are 
+`"pool": "juice_pool",
+                     "policyWAF": {
+                        "use": "JuiceShopASM"
+                     },`
+
+and                      
+
+
+              `   "JuiceShopASM": {
+                    "class": "WAF_Policy",
+                    "url": "https://raw.githubusercontent.com/RuncibleSpoon/F5AppSvcDemo/master/scenarios/AppSec/JuiceShop.xml"
+                    "ignoreChanges": true
+                },`
+
 
 
