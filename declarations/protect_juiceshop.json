@@ -49,7 +49,7 @@
 
                  "JuiceShopASM": {
                     "class": "WAF_Policy",
-                    "url": "https://raw.githubusercontent.com/RuncibleSpoon/as3/master/app_security/JuiceShopASM.xml",
+                    "url": "https://raw.githubusercontent.com/RuncibleSpoon/F5AppSvcDemo/master/scenarios/AppSec/JuiceShop.xml",
                     "ignoreChanges": true
                 },
 
