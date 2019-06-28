@@ -40,32 +40,34 @@ There are a couple of important things to know
 See below for instructions for starting the lab and running your frst declaration
 Each sample test will come with instructions and explanations
 
-### Starting the Lab
+**Starting the Lab**
 
-Required Parameters: 
+
+### Required Parameters 
 
 This lab is designed to be as turnkey as possible, with only a couple of mandatory paramters:
 
-KeyName: the name of the AWS keypair you need to 
-S3Bucket: The s3 bucket location
-DemoPrivateKey, DemoPublicKey: Dispossable SSH public and pivake keys
+**KeyName**: the name of the AWS keypair for auth into the devicres
+**S3Bucket**: The s3 bucket location
+**DemoPrivateKey, DemoPublicKey**: Dispossable SSH public and pivake keys
 
-There are also tow others you should set for restricting access
+There are also two others you should set for restricting access
 
-SrcIp:  Source IP address range for SSH
-PubScrIP:  Source IP for App access
+**SrcIp**:  Source IP address range for SSH
+**PubScrIP**:  Source IP for App access
 
-These default to open access
+These default to open access, so tying them down with a network range might be smart. 
 
-###Steps
+### Steps
 
 1) Create an S3 bucket - and give it public access attributes 
 2) Upload the templates from the teemplates directory into the bucket
 3) Create a disposable ssh key pair and  save the private key sd id_rsa, and the public key as key.pub (this is very bad practice, but just about OK for this demo)
-4) Launch the Lab - tool of your choce - this lab was devloepd using Windows PowerShell for AWS - but you can use the any method you like. An exmaple Script to launch the lab form powershell is supplied.
-5) Get the access details - the parent template outputs the IP addresses for the Utility Server, the BIG-IP and the App server.
-6) Login to the util server and complete a couple of post setup tasks 
-7) Explore the lab
+4) Launch the Lab - use tool of your choce - this lab was devloepd using Windows PowerShell for AWS - but you can use the any method you like. An exmaple Script to launch the lab form powershell is supplied.
+5) Go and make a cup of tea. The setup screipts on the BIG-IP take a bit of time to run.
+6) Get the access details - the parent template outputs the IP addresses for the Utility Server, the BIG-IP and the App server.
+7) Login to the util server and complete a couple of post setup tasks 
+8) Explore the labs
 
 ### Post  Install tasks (further work required)
 
@@ -84,9 +86,16 @@ Then run
 
 `sh ./home/ubuntu/setup.sh`
 
-### EXploring the Lab
+## Exploring the Lab
 
-Test Scenarios
+### Current Backends 
+
+There are two running contianers on the application server
+
+* A Simple NGINX webserver on port 80
+* The [OWASP Juicebox App](https://www.owasp.org/index.php/OWASP_Juice_Shop_Project) on port 3000
+
+Test Scenarios are defined in the tests directory with their own readme, and a AS3 declaration to amke the applicaiton accessible. 
 
 
 
