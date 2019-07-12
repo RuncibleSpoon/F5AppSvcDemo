@@ -3,11 +3,11 @@
 
 ## Introduction
 
-This is a beta version of a new cloud-based demo environment that will set up a VPC within AWS (more clouds to follow) contianing an Ubuntu Linux client instance (the Utility Server), an F5 BIG-IP, and Ubuntu Linux server EC2 instance. 
+This is a beta version of a new cloud-based demo environment that will set up a VPC within AWS (more clouds to follow) containing an Ubuntu Linux client instance (the Utility Server), an F5 BIG-IP, and Ubuntu Linux server EC2 instance. 
 
 ![alt text](https://github.com/RuncibleSpoon/F5AppSvcDemo/raw/master/images/lab.png "lab layout" )
 
-The deployment is done using [AWS Cloudformation](https://aws.amazon.com/cloudformation/) using the supplied cloudofrmation template. 
+The deployment is done using [AWS Cloudformation](https://aws.amazon.com/cloudformation/) using the supplied cloudformation template. 
 
 The client and server instances run [Docker](https://www.docker.com/) community edition and come laded with some tools and test scenarios to enable you to try out various application services like Web Application firewalls.  
 
