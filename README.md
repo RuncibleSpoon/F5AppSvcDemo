@@ -35,12 +35,12 @@ There are a couple of important things to know
 2) This lab is only us-west-1 in this version. The templates will be updated to be multi-region ASAP
 
 
-## Documentation
+#Documentation##
 
 See below for instructions for starting the lab and running your first declaration
 Each sample test will come with instructions and explanations
 
-**Starting the Lab**
+##Starting the Lab##
 
 
 ### Required Parameters 
@@ -48,7 +48,7 @@ Each sample test will come with instructions and explanations
 This lab is designed to be as turnkey as possible, with only a couple of mandatory parameters:
 
 **KeyName**: the name of the AWS keypair for auth into the devices
-**S3Bucket**: The s3 bucket location
+**S3Bucket**: The S3 bucket location
 **DemoPrivateKey, DemoPublicKey**: Disposable SSH public and private keys
 
 There are also two others you should set for restricting access
@@ -84,7 +84,7 @@ BIGIPUrl  | The URL to access the management console of the BIG-IP (use after yo
 There are two post install steps and some functionality tests to run post install.
 
 1) Set the password we will use for authorization when using AS3
-2) Run the post install script to a)Provision the correct software and auth on the BIG-IP
+2) Run the post install script to a)Provision the correct software and  b) configure auth on the BIG-IP
 3) Install some additional python modules (this will be moved into the main CFT eventually)
 
 First, set an environment variable for the password (this is used in later API calls)
