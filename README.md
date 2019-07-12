@@ -35,12 +35,12 @@ There are a couple of important things to know
 2) This lab is only us-west-1 in this version. The templates will be updated to be multi-region ASAP
 
 
-#Documentation##
+# Documentation #
 
 See below for instructions for starting the lab and running your first declaration
 Each sample test will come with instructions and explanations
 
-##Starting the Lab##
+## Starting the Lab ##
 
 
 ### Required Parameters 
