@@ -5,7 +5,7 @@
 
 # Assign Script Paramters and Define Variables
 # Specify static items, change these as needed or make them parameters
-region="us-west-2"
+region="us-west-1"
 restrictedSrcAddress="0.0.0.0/0"
 tagValues='[{"Key": "application", "Value": "f5app"},{"Key": "environment", "Value": "f5env"},{"Key": "group", "Value": "f5group"},{"Key": "owner", "Value": "f5owner"},{"Key": "costcenter", "Value": "f5costcenter"}]'
 ntpServer="0.pool.ntp.org"
@@ -15,32 +15,15 @@ timezone="UTC"
 while [[ $# -gt 1 ]]
 do
     case "$1" in
-        --licenseKey1)
-			licenseKey1=$2
-			shift 2;;
-		--licenseType)
-			licenseType=$2
-			shift 2;;
+        
 		--sshKey)
 			sshKey=$2
-			shift 2;;
-		--subnet1Az1)
-			subnet1Az1=$2
 			shift 2;;
 		--stackName)
 			stackName=$2
 			shift 2;;
-		--imageName)
-			imageName=$2
-			shift 2;;
 		--restrictedSrcAddressApp)
 			restrictedSrcAddressApp=$2
-			shift 2;;
-		--Vpc)
-			Vpc=$2
-			shift 2;;
-		--instanceType)
-			instanceType=$2
 			shift 2;;
 		--restrictedSrcAddress)
 			restrictedSrcAddress=$2

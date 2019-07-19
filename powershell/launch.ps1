@@ -16,4 +16,4 @@ $p4 = new-object Amazon.CloudFormation.Model.Parameter
 $p4.ParameterKey = "PubScrIP"
 $p4.ParameterValue = "204.134.187.137/24"
 # Call New-CFNStack with paramters 
-$stack =  New-CFNStack -StackName MyF5Lab -Capability CAPABILITY_NAMED_IAM  -TemplateURL https://s3-us-west-1.amazonaws.com/as3bkt/lab.yaml -Parameters @( $p1, $p2 )
+$stack =  New-CFNStack -StackName MyF5Lab -DisableRollback $true -Capability CAPABILITY_NAMED_IAM  -TemplateURL https://s3-us-west-1.amazonaws.com/as3bkt/lab.yaml -Parameters @( $p1, $p2 )

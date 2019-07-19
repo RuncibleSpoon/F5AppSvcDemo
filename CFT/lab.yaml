@@ -9,6 +9,7 @@ Parameters:
   KeyName:
     Description: Name of an existing EC2 KeyPair to enable SSH access to the instance
     Type: AWS::EC2::KeyPair::KeyName
+    #AllowedPattern: [a-zA-Z0-9-_~!@#$%^&*()\\+]+$
     ConstraintDescription: must be the name of an existing EC2 KeyPair.
   S3Bucket:
     Description: location of the templates and private keys for internal auth
@@ -48,8 +49,14 @@ Parameters:
 Mappings:      
   RegionMap: 
    us-west-1:
-      AppServer:  ami-057a852b5ed4b66bc
-      UtilServer: ami-057a852b5ed4b66bc
+      AppServer:  ami-068670db424b01e9a
+      UtilServer: ami-068670db424b01e9a
+   eu-west-1: 
+      AppServer:   ami-01e6a0b85de033c99
+      UtilServer:  ami-01e6a0b85de033c99 
+   ap-northeast-1: 
+      AppServer:   ami-09b68f5653871885f
+      UtilServer:  ami-09b68f5653871885f
     
 #    
 # Plumbing
@@ -71,7 +78,7 @@ Resources:
       Name: "example.com"
       VPCs: 
         - VPCId: !Ref VPC
-          VPCRegion: !Ref Region
+          VPCRegion: !Ref "AWS::Region"
 
   # Our VPC will need internet access:     
   InternetGateway:
