@@ -32,7 +32,7 @@ There are a couple of important things to know
 
 1) This lab is not built to best practices for production security. In particular you are asked to supply a key pair for use in the demo - this should be disposable (you will still need to specify a standard AWS key pair for remote access )
 
-2) This lab is only us-west-1 in this version. The templates will be updated to be multi-region ASAP
+2) This lab is only  available in us-west-1, eu-west-1, and ap-northeast-1 in this version. 
 
 
 # Documentation #
