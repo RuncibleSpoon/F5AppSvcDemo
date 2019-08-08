@@ -15,5 +15,9 @@ $p3.ParameterValue = "204.134.187.137/24"
 $p4 = new-object Amazon.CloudFormation.Model.Parameter
 $p4.ParameterKey = "PubScrIP"
 $p4.ParameterValue = "204.134.187.137/24"
+# Admin password for BIG-IP
+$p5 = new-object Amazon.CloudFormation.Model.Parameter
+$p5.ParameterKey = "BigIpAdminPW"
+$p5.ParameterValue = "cowpigdog"
 # Call New-CFNStack with paramters 
-$stack =  New-CFNStack -StackName MyF5Lab -DisableRollback $true -Capability CAPABILITY_NAMED_IAM  -TemplateURL https://s3-us-west-1.amazonaws.com/as3bkt/lab.yaml -Parameters @( $p1, $p2 )
+$stack =  New-CFNStack -StackName MyF5Lab -DisableRollback $true -Capability CAPABILITY_NAMED_IAM  -TemplateURL https://s3-us-west-1.amazonaws.com/as3bkt/lab.yaml -Parameters @( $p1, $p2, $p5 )

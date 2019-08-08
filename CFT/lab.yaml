@@ -11,6 +11,10 @@ Parameters:
     Type: AWS::EC2::KeyPair::KeyName
     #AllowedPattern: [a-zA-Z0-9-_~!@#$%^&*()\\+]+$
     ConstraintDescription: must be the name of an existing EC2 KeyPair.
+  BigIpAdminPW:
+    Description: Admin password for the BIG-IP
+    Type: String
+    Default: cowpigdog
   S3Bucket:
     Description: location of the templates and private keys for internal auth
     Type: String
@@ -365,6 +369,7 @@ Resources:
         restrictedSrcAddressApp: !Ref PubScrIP
         S3Bucket: !Ref  S3Bucket
         DemoPublicKey: !Ref DemoPublicKey
+        AdminPW: !Ref BigIpAdminPW
         
       Tags: 
         - Key: Name

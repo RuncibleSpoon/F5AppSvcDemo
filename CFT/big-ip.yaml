@@ -504,6 +504,7 @@ Metadata:
           - restrictedSrcAddressApp
           - ntpServer
           - timezone
+          - AdminPW
       - Label:
           default: TAGS
         Parameters:
@@ -588,6 +589,8 @@ Metadata:
         default: Subnet2 in AZ2
       timezone:
         default: Timezone (Olson)
+      AdminPW:
+        default: Admin Password - bad practice but DEMO  
   Version: 4.2.0
 Outputs:
   Bigip1ExternalInterfacePrivateIp:
@@ -810,6 +813,9 @@ Parameters:
     Description: The public key to enable auth within this demo
     Default: key.pub
     Type: String 
+  AdminPW:
+    Description: admin password
+    Type: String  
 Resources:
   Bigip1Instance:
     Metadata:
@@ -891,7 +897,7 @@ Resources:
                       /config/cloud/aws/node_modules/@f5devcentral/f5-cloud-libs/scripts/onboard.js
                     - >-
                       --install-ilx-package
-                      file:///config/cloud/f5-appsvcs-3.12.0-5.noarch.rpm
+                      file:///config/cloud/f5-appsvcs-3.13.0-3.noarch.rpm
                     - '--port 8443'
                     - '--ssl-port '
                     - !Ref managementGuiPort
@@ -1039,13 +1045,15 @@ Resources:
                   - |
                     source /config/cloud/aws/onboard_config_vars
                   - |
-                    #tmsh modify auth user admin password horsedogmonkey
-                  - |
-                    #tmsh save sys config
-                  - |
                     echo "starting curl from $S3Bucket $DemoPublicKey "
                   - |
                     curl $S3Bucket/$DemoPublicKey >> /home/admin/.ssh/authorized_keys
+                  - |
+                    echo "modifying password"
+                  - |
+                    tmsh modify auth user admin password $passwd
+                  - |
+                    tmsh save sys config
                   - |
                     deployed="no"
                   - >
@@ -1161,8 +1169,10 @@ Resources:
                   - |
                     '
                   - |
-                    passwd='horsedogmonkey'
-                  
+                    passwd='
+                  - !Ref AdminPW  
+                  - |
+                    '                  
                   - managementGuiPort='
                   - !Ref managementGuiPort
                   - |
@@ -1229,12 +1239,12 @@ Resources:
               owner: root
               source: >-
                 http://cdn.f5.com/product/cloudsolutions/f5-appsvcs-extension/v3.6.0/dist/lts/f5-appsvcs-3.5.1-5.noarch.rpm
-            /config/cloud/f5-appsvcs-3.12.0-5.noarch.rpm:
+            /config/cloud/f5-appsvcs-3.13.0-3.noarch.rpm:
               group: root
               mode: '000755'
               owner: root
               source: >-
-                https://github.com/F5Networks/f5-appsvcs-extension/raw/master/dist/latest/f5-appsvcs-3.12.0-5.noarch.rpm
+                https://github.com/F5Networks/f5-appsvcs-extension/raw/master/dist/latest/f5-appsvcs-3.13.0-3.noarch.rpm
             /config/cloud/f5-cloud-libs-aws.tar.gz:
               group: root
               mode: '000755'
