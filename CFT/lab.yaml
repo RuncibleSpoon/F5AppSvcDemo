@@ -76,13 +76,13 @@ Resources:
       - Key: Name
         Value:  !Join ['', [!Ref "AWS::StackName", "-VPC" ]]
   # Private DNS Zone
-  DNS: 
-    Type: AWS::Route53::HostedZone
-    Properties:
-      Name: "example.com"
-      VPCs: 
-        - VPCId: !Ref VPC
-          VPCRegion: !Ref "AWS::Region"
+  # DNS: 
+  #   Type: AWS::Route53::HostedZone
+  #   Properties:
+  #     Name: "example.com"
+  #     VPCs: 
+  #       - VPCId: !Ref VPC
+  #         VPCRegion: !Ref "AWS::Region"
 
   # Our VPC will need internet access:     
   InternetGateway:
@@ -162,7 +162,10 @@ Resources:
             set -o errexit; set -o nounset; set -o pipefail
             # set the hostname 
             sudo hostname app1
-            echo app1 > /etc/hostname 
+            echo app1 > /etc/hostname
+            # set up hosts file 
+            echo  10.1.10.50 bigip >> /etc/hosts 
+            echo  10.1.10.10 utilserver >> /etc/hosts
             # Do some nasty hack auth stuff
             echo "Insatlling the public key from ${S3Bucket}"
             curl ${S3Bucket}/${DemoPublicKey} >> /home/ubuntu/.ssh/authorized_keys
@@ -232,6 +235,10 @@ Resources:
             # set the hostname 
             sudo hostname util
             echo util > /etc/hostname
+            # set up hosts file
+            echo  10.1.10.50 bigip >> /etc/hosts 
+            echo  10.1.10.100 appserver >> /etc/hosts
+            echo  export BIGPASS=${BigIpAdminPW} >> /home/ubuntu/.profile
             # set the path for locust 
             echo export PATH=$PATH:~/.local/bin >> /home/ubuntu/.bashrc
             # Do some nasty hack auth stuff to allow internal auth
@@ -243,7 +250,8 @@ Resources:
             DEBIAN_FRONTEND=noninteractive apt-get -y install python-pip
             pip install https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-latest.tar.gz
             /usr/local/bin/cfn-init -v --stack ${AWS::StackName} --resource UtilServer  --region ${AWS::Region}
-            
+            # Get the python modules we need installed 
+            pip install requests==2.21. locustio
           
     Metadata:
       AWS::CloudFormation::Init:
@@ -276,25 +284,25 @@ Resources:
             'k_fix_permissions':
               command: 'chown -R ubuntu:ubuntu ~/ubuntu/as3'   
       
-  UsDNSRecord:
-    Type: AWS::Route53::RecordSet
-    Properties:
-      HostedZoneName: example.com.
-      Name: util.example.com.
-      Type: A
-      TTL: '900'
-      ResourceRecords:
-        - !GetAtt UtilServer.PrivateIp     
+  # UsDNSRecord:
+  #   Type: AWS::Route53::RecordSet
+  #   Properties:
+  #     HostedZoneName: example.com.
+  #     Name: util.example.com.
+  #     Type: A
+  #     TTL: '900'
+  #     ResourceRecords:
+  #       - !GetAtt UtilServer.PrivateIp     
   
-  AppDNSRecord:
-    Type: AWS::Route53::RecordSet
-    Properties:
-      HostedZoneName: example.com.
-      Name: app1.example.com.
-      Type: A
-      TTL: '900'
-      ResourceRecords:
-        - !GetAtt AppServer1.PrivateIp    
+  # AppDNSRecord:
+  #   Type: AWS::Route53::RecordSet
+  #   Properties:
+  #     HostedZoneName: example.com.
+  #     Name: app1.example.com.
+  #     Type: A
+  #     TTL: '900'
+  #     ResourceRecords:
+  #       - !GetAtt AppServer1.PrivateIp    
 
       
 

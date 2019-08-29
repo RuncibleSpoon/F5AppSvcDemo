@@ -897,7 +897,7 @@ Resources:
                       /config/cloud/aws/node_modules/@f5devcentral/f5-cloud-libs/scripts/onboard.js
                     - >-
                       --install-ilx-package
-                      file:///config/cloud/f5-appsvcs-3.13.0-3.noarch.rpm
+                      file:///config/cloud/f5-appsvcs-3.13.1-1.noarch.rpm
                     - '--port 8443'
                     - '--ssl-port '
                     - !Ref managementGuiPort
@@ -1239,12 +1239,12 @@ Resources:
               owner: root
               source: >-
                 http://cdn.f5.com/product/cloudsolutions/f5-appsvcs-extension/v3.6.0/dist/lts/f5-appsvcs-3.5.1-5.noarch.rpm
-            /config/cloud/f5-appsvcs-3.13.0-3.noarch.rpm:
+            /config/cloud/f5-appsvcs-3.13.1-1.noarch.rpm:
               group: root
               mode: '000755'
               owner: root
               source: >-
-                https://github.com/F5Networks/f5-appsvcs-extension/raw/master/dist/latest/f5-appsvcs-3.13.0-3.noarch.rpm
+                https://github.com/F5Networks/f5-appsvcs-extension/raw/master/dist/lts/3.13.1/f5-appsvcs-3.13.1-1.noarch.rpm
             /config/cloud/f5-cloud-libs-aws.tar.gz:
               group: root
               mode: '000755'
@@ -1492,18 +1492,18 @@ Resources:
           - Bigip1Staticsubnet1Az1Interface
           - PrimaryPrivateIpAddress
     Type: 'AWS::EC2::EIPAssociation'
-  DNSRecord:
-    Type: 'AWS::Route53::RecordSet'
-    Properties:
-      HostedZoneName: example.com.
-      Name: bigip.example.com.
-      Type: A
-      TTL: '900'
-      ResourceRecords:
+  # DNSRecord:
+  #   Type: 'AWS::Route53::RecordSet'
+  #   Properties:
+  #     HostedZoneName: example.com.
+  #     Name: bigip.example.com.
+  #     Type: A
+  #     TTL: '900'
+  #     ResourceRecords:
         
-        - !GetAtt 
-          - Bigip1Staticsubnet1Az1Interface
-          - PrimaryPrivateIpAddress
+  #       - !GetAtt 
+  #         - Bigip1Staticsubnet1Az1Interface
+  #         - PrimaryPrivateIpAddress
   bigipExternalSecurityGroup:
     Properties:
       GroupDescription: 'Public or External interface rules, including BIG-IP management'

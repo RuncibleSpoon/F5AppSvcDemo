@@ -19,7 +19,8 @@ args = parser.parse_args()
 
 
 #Set up our url for the as3 declaration 
-AS3BASE = 'https://raw.githubusercontent.com/RuncibleSpoon/F5AppSvcDemo/master/declarations/'
+#AS3BASE = 'https://raw.githubusercontent.com/RuncibleSpoon/F5AppSvcDemo/master/declarations/'
+AS3BASE = "~/F5AppSvcDemo/cft/declarations/"
 # Declaration location
 #DECLARATION = AS3BASE + os.environ['DECLARATION']
 DECLARATION = AS3BASE + args.declaration
@@ -32,8 +33,8 @@ TESTPATH = '/mgmt/shared/appsvcs/info'
 AS3PATH = '/mgmt/shared/appsvcs/declare'
 
 print("########### Fetching Declaration ###########")
-d = requests.get(DECLARATION)
-
+#d = requests.get(DECLARATION)
+d = open(declaration,"r")
 # Check we have connectivity and AS3 is installed
 print('########### Checking that AS3 is running on ', IP ,' #########')
 url = URLBASE + TESTPATH
