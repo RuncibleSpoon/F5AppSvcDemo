@@ -52,7 +52,7 @@ if r.status_code == 200:
       headers = { 'content-type': 'application/json',
               'accept': 'application/json' }
       r = requests.post(url, auth=HTTPBasicAuth(USER, PASS), verify=False,
-         data=d.text, headers=headers)
+         data=d, headers=headers)
       print('Status Code:', r.status_code,'\n', r.text)
    else:
       print('AS3 test to ',IP, 'failed: ', r.text)
