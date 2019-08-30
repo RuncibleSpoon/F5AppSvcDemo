@@ -176,6 +176,7 @@ Resources:
             /usr/local/bin/cfn-init -v --stack ${AWS::StackName} --resource AppServer1  --region ${AWS::Region}
             
             
+            
 
     Metadata:
       AWS::CloudFormation::Init:
@@ -205,7 +206,15 @@ Resources:
             'j_juiceshop':
               command: 'docker pull bkimminich/juice-shop'
             'k_juiceshop_run':
-              command: 'docker run  -dit -p 3000:3000 bkimminich/juice-shop'    
+              command: 'docker run  -dit -p 3000:3000 bkimminich/juice-shop'  
+            'l_blue':
+              comand: 'docker pull runciblespoon/demo-blue'
+            'm_blue_run':
+              command: 'docker run -dit -p 9081:80 runciblespoon/demo-blue' 
+            'n_green':
+              command: 'docker pull runciblespoon/demo-green'
+            'o_green_run':
+              command: 'docker run -dit -p 9080:80 runciblespoon/demo-green'  
                 
     # Util Server for docker etc
   UtilServer: 
