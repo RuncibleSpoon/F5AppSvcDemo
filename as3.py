@@ -34,7 +34,7 @@ AS3PATH = '/mgmt/shared/appsvcs/declare'
 
 print("########### Fetching Declaration ###########")
 #d = requests.get(DECLARATION)
-d = open(declaration,"r")
+d = open(DECLARATION,"r")
 # Check we have connectivity and AS3 is installed
 print('########### Checking that AS3 is running on ', IP ,' #########')
 url = URLBASE + TESTPATH
