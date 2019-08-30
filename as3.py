@@ -20,7 +20,7 @@ args = parser.parse_args()
 
 #Set up our url for the as3 declaration 
 #AS3BASE = 'https://raw.githubusercontent.com/RuncibleSpoon/F5AppSvcDemo/master/declarations/'
-AS3BASE = "~/F5AppSvcDemo/cft/declarations/"
+AS3BASE = "/home/ubuntu/F5AppSvcDemo/declarations/"
 # Declaration location
 #DECLARATION = AS3BASE + os.environ['DECLARATION']
 DECLARATION = AS3BASE + args.declaration
