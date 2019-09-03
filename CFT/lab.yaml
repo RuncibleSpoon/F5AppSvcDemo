@@ -210,11 +210,11 @@ Resources:
             'l_blue':
               comand: 'docker pull runciblespoon/demo-blue'
             'm_blue_run':
-              command: 'docker run -dit -p 9081:80 runciblespoon/demo-blue' 
+              command: 'docker run -dit -p 80:9081 runciblespoon/demo-blue' 
             'n_green':
               command: 'docker pull runciblespoon/demo-green'
             'o_green_run':
-              command: 'docker run -dit -p 9080:80 runciblespoon/demo-green'  
+              command: 'docker run -dit -p 80:9080 runciblespoon/demo-green'  
                 
     # Util Server for docker etc
   UtilServer: 
