@@ -208,7 +208,7 @@ Resources:
             'k_juiceshop_run':
               command: 'docker run  -dit -p 3000:3000 bkimminich/juice-shop'  
             'l_blue':
-              comand: 'docker pull runciblespoon/demo-blue'
+              command: 'docker pull runciblespoon/demo-blue'
             'm_blue_run':
               command: 'docker run -dit -p 9081:80 runciblespoon/demo-blue' 
             'n_green':
