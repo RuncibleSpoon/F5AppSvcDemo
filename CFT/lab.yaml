@@ -210,11 +210,11 @@ Resources:
             'l_blue':
               comand: 'docker pull runciblespoon/demo-blue'
             'm_blue_run':
-              command: 'docker run -dit -p 80:9081 runciblespoon/demo-blue' 
+              command: 'docker run -dit -p 9081:80 runciblespoon/demo-blue' 
             'n_green':
               command: 'docker pull runciblespoon/demo-green'
             'o_green_run':
-              command: 'docker run -dit -p 80:9080 runciblespoon/demo-green'  
+              command: 'docker run -dit -p 9080:80 runciblespoon/demo-green'  
                 
     # Util Server for docker etc
   UtilServer: 
@@ -245,8 +245,8 @@ Resources:
             sudo hostname util
             echo util > /etc/hostname
             # set up hosts file
-            echo  10.1.10.50 bigip >> /etc/hosts 
-            echo  10.1.10.100 appserver >> /etc/hosts
+            echo  10.1.10.50 bigip bigip.example.com >> /etc/hosts 
+            echo  10.1.10.100 appserver appserver.example.com >> /etc/hosts
             echo  export BIGPASS=${BigIpAdminPW} >> /home/ubuntu/.profile
             # set the path for locust 
             echo export PATH=$PATH:~/.local/bin >> /home/ubuntu/.bashrc
