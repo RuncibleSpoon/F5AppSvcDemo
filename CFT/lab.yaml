@@ -260,7 +260,7 @@ Resources:
             pip install https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-latest.tar.gz
             /usr/local/bin/cfn-init -v --stack ${AWS::StackName} --resource UtilServer  --region ${AWS::Region}
             # Get the python modules we need installed 
-            pip install requests==2.21. locustio
+            pip install requests
           
     Metadata:
       AWS::CloudFormation::Init:
