@@ -257,10 +257,11 @@ Resources:
             # Install Python and AWS cfn-bootstrap utilities
             apt-get update
             DEBIAN_FRONTEND=noninteractive apt-get -y install python-pip
+            pip install requests
             pip install https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-latest.tar.gz
             /usr/local/bin/cfn-init -v --stack ${AWS::StackName} --resource UtilServer  --region ${AWS::Region}
-            # Get the python modules we need installed 
-            pip install requests
+            
+            
           
     Metadata:
       AWS::CloudFormation::Init:
