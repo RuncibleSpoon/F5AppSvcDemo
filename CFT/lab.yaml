@@ -292,7 +292,7 @@ Resources:
             'j_clone_utils ':
               command: 'git clone https://github.com/RuncibleSpoon/F5AppSvcDemo /home/ubuntu/F5AppSvcDemo'
             'k_fix_permissions':
-              command: 'chown -R ubuntu:ubuntu ~/ubuntu/as3'   
+              command: 'chown -R ubuntu:ubuntu /home/ubuntu/*'   
       
   # UsDNSRecord:
   #   Type: AWS::Route53::RecordSet
