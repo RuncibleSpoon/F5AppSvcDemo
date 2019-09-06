@@ -28,14 +28,14 @@
                      ],
                      "members": [
                          {
-                             "servicePort": 9081,
+                             "servicePort": 9080,
 			     "ratio": 90,
                              "serverAddresses": [
                                  "10.1.10.100"
                                                ]
                          },
                          {
-                             "servicePort": 9080,
+                             "servicePort": 9081,
 			     "ratio": 10,
                              "serverAddresses": [
                                  "10.1.10.100"
