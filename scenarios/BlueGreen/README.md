@@ -40,9 +40,9 @@ Let's start with a 90:10 ratio of green to blue:
 `$python ~/F5AppSvcDemo/as3.py bleu10green90.json`
 
 
-Now navigate to the app:
+Now navigate to the app again:
 
-http://<ipaddress of your BIG-IP install>/
+http:\/\/\<ipaddress of your BIG-IP install\>\/
 
 You're probably going to get a green screen, but you never know. Since this could get a little tiresome, we've included a handy script that runs 100 HTTP GET requests and reports the results
 
@@ -55,7 +55,7 @@ If we are happy with that, we can move to 50:50 ratio
 
 `ubuntu@util:~/F5AppSvcDemo$ python as3.py blue50green50.json`
 
-![alt text](https://github.com/RuncibleSpoon/F5AppSvcDemo/raw/master/images/B50G50.PNG  "Counter script results")
+![alt text](https://github.com/RuncibleSpoon/F5AppSvcDemo/raw/master/images/50B50G.PNG  "Counter script results")
 
 And then maybe a 90:10
 
