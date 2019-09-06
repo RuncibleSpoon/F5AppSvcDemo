@@ -27,7 +27,7 @@
                      ],
                      "members": [
                          {
-                             "servicePort": 9080,
+                             "servicePort": 9081,
                              "serverAddresses": [
                                  "10.1.10.100"
                                                ]
