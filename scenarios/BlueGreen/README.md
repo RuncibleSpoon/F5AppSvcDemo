@@ -27,7 +27,7 @@ Run the green.json AS3 declaration
 
 Now navigate to the app:
 
-"http:\/\/\<ipaddress of your BIG-IP install\>\/"
+http:\/\/\<ipaddress of your BIG-IP install\>\/
 
 And check you have a pleasing green app. 	
 
