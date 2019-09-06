@@ -161,6 +161,9 @@ Because the BIG-IP pro-actively monitors the app, traffic is only sent to the wo
 
 Let's fix the app and repeat:
 
+`ubuntu@util:~/F5AppSvcDemo$ ssh appserver docker unpause blue_server
+blue_server`
+
 ![alt text](https://github.com/RuncibleSpoon/F5AppSvcDemo/raw/master/images/resume.PNG  "resumed")
 
 You can see that once the blue app was market up, traffic resumed - there is also a 'slow start' grace period so that new instances don't get slammed straight away. 
