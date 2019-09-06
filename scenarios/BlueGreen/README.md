@@ -115,7 +115,7 @@ And attach it to your AS3 declaration as an external stored file
 `~/F5AppSvcDemo$ python as3.py  blue10green90_external.json`
 
 
-![alt text](https://github.com/RuncibleSpoon/F5AppSvcDemo/raw/master/images/B10_external.PNG  "Counter script results")
+![alt text](https://github.com/RuncibleSpoon/F5AppSvcDemo/raw/master/images/b10_external.PNG  "Counter script results")
 
 Which is as  you'd expect, but if you go the external app address you will always get the green app.
 
