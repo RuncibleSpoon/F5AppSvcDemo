@@ -119,6 +119,9 @@ And attach it to your AS3 declaration as an external stored file
 
 Which is as  you'd expect, but if you go the external app address you will ***always*** get the green app.
 
+![alt text](https://github.com/RuncibleSpoon/F5AppSvcDemo/raw/master/images/allgreen.png  "External app")
+
+
 In addition we are logging the connections in this rule:
 
 ```
@@ -134,6 +137,32 @@ Sep  6 21:00:21 ip-10-1-10-50 info tmm1[16202]: Rule /Sample_01/A1/external_gree
 Sep  6 21:00:22 ip-10-1-10-50 info tmm1[16202]: Rule /Sample_01/A1/external_green_only <HTTP_REQUEST>: Client IP:24.19.222.3 is external so going to Green node
 
 ```
+### What if  the New Version's not working? ###
 
+Good question. Even in this simple deployment, you don't want users expecting a soothing blue page to be upset by a 500 error, or a "page not found" notice. What happens if the new app is failing?
 
+Let's try.
 
+First set things back to 50:50
+
+`ubuntu@util:~/F5AppSvcDemo$ python as3.py blue50green50.json`
+
+Now let's pause the new blue app
+
+`ubuntu@util:~/F5AppSvcDemo$ ssh appserver docker pause blue_server
+blue_server
+ubuntu@util:~/F5AppSvcDemo$`
+
+And run our counter test:
+
+![alt text](https://github.com/RuncibleSpoon/F5AppSvcDemo/raw/master/images/monitor.PNG  "with monitor")
+
+Because the BIG-IP pro-actively monitors the app, traffic is only sent to the working version 
+
+Let's fix the app and repeat:
+
+![alt text](https://github.com/RuncibleSpoon/F5AppSvcDemo/raw/master/images/resume.PNG  "resumed")
+
+You can see that once the blue app was market up, traffic resumed - there is also a 'slow start' grace period so that new instances don't get slammed straight away. 
+
+Feel free to examine more ways to manage traffic there is a full reference guide for AS3 [available on-line](https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/)
