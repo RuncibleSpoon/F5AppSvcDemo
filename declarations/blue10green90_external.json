@@ -45,7 +45,7 @@
                      ]
                  },
 
-                 "Maintenance_iRule": {
+                 "external_green_only": {
                     "class": "iRule",
                     "iRule": {
                     "url": "https://raw.githubusercontent.com/RuncibleSpoon/F5AppSvcDemo/master/scenarios/BlueGreen/irule.tcl"
