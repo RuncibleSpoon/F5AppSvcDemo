@@ -112,37 +112,28 @@ And attach it to your AS3 declaration as an external stored file
 ...
 ```                    
 
+`~/F5AppSvcDemo$ python as3.py  blue10green90_external.json`
 
 
-`$ python ~/F5AppSvcDemo/as3.py protect_juiceshop.json`
+![alt text](https://github.com/RuncibleSpoon/F5AppSvcDemo/raw/master/images/B10_external.PNG  "Counter script results")
 
-Let's try that again
+Which is as  you'd expect, but if you go the external app address you will always get the green app.
 
-![alt text](https://github.com/RuncibleSpoon/F5AppSvcDemo/raw/master/images/juiceshop4.PNG "Juiceshop App")
+In addition we are logging the connections in this rule:
 
-OK, so we also discover another hack, where the system doesn't handle errors very gracefully, but at least we have shut off this attack. 
+```
+Sep  6 20:57:27 ip-10-1-10-50 info tmm1[16202]: Rule /Sample_01/A1/external_green_only <HTTP_REQUEST>: Client IP:10.1.10.10 is internal so will be load balanced
+Sep  6 20:57:27 ip-10-1-10-50 info tmm[16202]: Rule /Sample_01/A1/external_green_only <HTTP_REQUEST>: Client IP:10.1.10.10 is internal so will be load balanced
+Sep  6 20:57:27 ip-10-1-10-50 info tmm1[16202]: Rule /Sample_01/A1/external_green_only <HTTP_REQUEST>: Client IP:10.1.10.10 is internal so will be load balanced
+Sep  6 20:57:27 ip-10-1-10-50 info tmm[16202]: Rule /Sample_01/A1/external_green_only <HTTP_REQUEST>: Client IP:10.1.10.10 is internal so will be load balanced
+Sep  6 20:57:27 ip-10-1-10-50 info tmm1[16202]: Rule /Sample_01/A1/external_green_only <HTTP_REQUEST>: Client IP:10.1.10.10 is internal so will be load balanced
+Sep  6 20:57:27 ip-10-1-10-50 info tmm[16202]: Rule /Sample_01/A1/external_green_only <HTTP_REQUEST>: Client IP:10.1.10.10 is internal so will be load balanced
+Sep  6 21:00:20 ip-10-1-10-50 info tmm1[16202]: Rule /Sample_01/A1/external_green_only <HTTP_REQUEST>: Client IP:24.19.222.3 is external so going to Green node
+Sep  6 21:00:21 ip-10-1-10-50 info tmm1[16202]: Rule /Sample_01/A1/external_green_only <HTTP_REQUEST>: Client IP:24.19.222.3 is external so going to Green node
+Sep  6 21:00:21 ip-10-1-10-50 info tmm1[16202]: Rule /Sample_01/A1/external_green_only <HTTP_REQUEST>: Client IP:24.19.222.3 is external so going to Green node
+Sep  6 21:00:22 ip-10-1-10-50 info tmm1[16202]: Rule /Sample_01/A1/external_green_only <HTTP_REQUEST>: Client IP:24.19.222.3 is external so going to Green node
 
-Taking a look at the [protect_juiceshop.json](https://github.com/RuncibleSpoon/F5AppSvcDemo/blob/master/declarations/protect_juiceshop.json) declaration, you can see a couple of key differences from the simple [juiceshop.json](https://github.com/RuncibleSpoon/F5AppSvcDemo/blob/master/declarations/juiceshop.json) declaration. 
-
-In particular the relevant lines are 
-
-`"pool": "juice_pool",
-                     "policyWAF": {
-                        "use": "JuiceShopASM"
-                     },`
-
-and                      
-
-
-              `   "JuiceShopASM": {
-                    "class": "WAF_Policy",
-                    "url": "https://raw.githubusercontent.com/RuncibleSpoon/F5AppSvcDemo/master/scenarios/AppSec/JuiceShop.xml"
-                    "ignoreChanges": true
-                },`
-
-Where we define which Web Application Firewall (WAF) policy to use, and later define the [policy location](https://github.com/RuncibleSpoon/F5AppSvcDemo/blob/master/scenarios/AppSec/JuiceShop.xml). The policy is readable, but is checksummed to prevent malicious interference. 
-
-There are probably other hacks that this policy mitigates, why not try to find a few? 
+```
 
 
 
