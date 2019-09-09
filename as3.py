@@ -47,7 +47,7 @@ if r.status_code == 200:
    data = r.json()
    if data["version"]:
       print('AS3 version is ', data["version"])
-      print('########## Runnig Declaration #############')
+      print('########## Running Declaration #############')
       url = URLBASE + AS3PATH
       headers = { 'content-type': 'application/json',
               'accept': 'application/json' }
