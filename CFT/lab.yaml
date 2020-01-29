@@ -1,7 +1,9 @@
 AWSTemplateFormatVersion: 2010-09-09
 # This CloudFormation template deploys a basic F5 Demo Environment in a VPC 
 # It is not production ready and is intended for test use only
-# No warraty explicit or implied is granted
+# No warraty explicit or implied is 
+# 
+# This line blank
 #
 # Parameters 
 #
