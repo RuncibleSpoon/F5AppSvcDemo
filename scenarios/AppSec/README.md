@@ -1,7 +1,7 @@
 # Testing out F5 Application Security Services with the OWASP JuiceShop App
 
 
-## Introduction 
+## Introduction to Juiceshop
 
 The [OWASP Juicebox App](https://www.owasp.org/index.php/OWASP_Juice_Shop_Project) is a well written, almost-bug free application that is chock full of vulnerabilities for you to find and exploit.  
 
